@@ -4,235 +4,319 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jayming Liu Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      * {
+        box-sizing: border-box;
+      }
       body {
-        font-family: Arial, sans-serif;
-        color: #1d1d1d;
+        margin: 0;
+        padding: 2rem 1rem;
+        background: #e5e5e5;
+        color: #111;
+        font-family: "Inter", Arial, sans-serif;
+        font-size: 14px;
+        line-height: 1.3;
+      }
+      .page {
         max-width: 52rem;
         margin: auto;
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        background-color: gray;
+        background: #fff;
+        padding: 3rem 3.5rem;
+        box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
       }
-      @media print {
-        body {
-          max-width: 46rem !important;
-          padding: 0;
-        }
-        .white {
-          padding: 0 !important;
-        }
+      a {
+        color: inherit;
+        text-decoration: none;
       }
-      .white {
-        background-color: white;
-        padding: 3rem;
-        min-width: 26rem;
-      }
-
-      p {
-        color: #000000;
-        line-height: 1.1;
-        margin-bottom: 0;
-        font-family: Times New Roman, sans-serif;
-      }
-      li p {
-        line-height: 1.1;
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-      ul {
-        margin-top: 0rem;
-        margin-bottom: 0;
+      a:hover {
+        text-decoration: underline;
       }
       h1 {
-        line-height: 0;
         font-size: 2rem;
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.1;
+      }
+      .contact {
+        color: #333;
+        font-size: 0.9rem;
+        margin-top: 0.3rem;
+      }
+      .contact .sep {
+        margin: 0 0.4rem;
       }
       h2 {
-        line-height: 0;
-        font-size: 1.2rem;
-        margin-bottom: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin: 0.75rem 0 0.25rem;
+        padding-bottom: 0.1rem;
+        border-bottom: 1.5px solid #111;
       }
-      h3 {
-        line-height: 1.1;
+      p {
         margin: 0;
-        font-size: 1.1rem;
       }
-      .left {
-        float: left;
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 0.2rem;
       }
-      .right {
-        float: right;
-        margin: 0rem;
-        padding-top: 0rem;
+      .row .title {
+        font-weight: 600;
       }
-      .right p {
-        line-height: 0;
+      .row .date {
+        white-space: nowrap;
+        color: #333;
       }
-      hr {
-        line-height: 0;
-        margin-top: 0.8rem;
-        margin-bottom: 0.2rem;
-        padding: 0;
+      ul {
+        margin: 0.1rem 0 0;
+        padding-left: 1.2rem;
       }
-
+      li {
+        margin: 0;
+      }
+      .skills {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        column-gap: 0.9rem;
+        margin: 0;
+      }
+      .skills dt {
+        font-weight: 600;
+      }
+      .skills dd {
+        margin: 0;
+      }
+      @media (max-width: 600px) {
+        .page {
+          padding: 1.5rem 1rem;
+        }
+        .row {
+          flex-direction: column;
+          gap: 0;
+        }
+        .skills {
+          grid-template-columns: 1fr;
+        }
+        .skills dd {
+          margin-bottom: 0.3rem;
+        }
+      }
+      .print-btn {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.5rem 0.9rem;
+        font: 600 0.9rem "Inter", Arial, sans-serif;
+        color: #fff;
+        background: #111;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+      }
+      .print-btn:hover {
+        background: #333;
+      }
+      @media print {
+        .print-btn {
+          display: none;
+        }
+        @page {
+          size: letter;
+          margin: 0.4in 0.5in;
+        }
+        body {
+          background: #fff;
+          padding: 0;
+          font-size: 10.5pt;
+          line-height: 1.26;
+        }
+        h1 {
+          font-size: 20pt;
+        }
+        .page {
+          max-width: none;
+          padding: 0;
+          box-shadow: none;
+        }
+      }
     </style>
   </head>
 
   <body>
-    <div class="white">
-      <h1 class="left"><strong>Jayming Liu</strong></h1>
-      <div class="right">
-        <h3><strong>Contact Information</strong></h3>
-        <hr style="margin: 0" />
-        <p style="margin-top: 0.5rem">
-          <strong>Address:</strong> Tokyo, Shinjuku-ku
-        </p>
-        <p><strong>Phone:</strong> +81 07090804369</p>
-        <p><strong>Email:</strong> liujayming@gmail.com</p>
+    <button class="print-btn" onclick="window.print()" aria-label="Print resume">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+        <rect x="6" y="14" width="12" height="8"></rect>
+      </svg>
+      Print
+    </button>
+    <div class="page">
+      <h1>Jayming Liu</h1>
+      <div class="contact">
+        Tokyo, Shinjuku-ku<span class="sep">·</span>+81 70-9080-4369<span
+          class="sep"
+          >·</span
+        ><a href="mailto:liujayming@gmail.com">liujayming@gmail.com</a
+        ><span class="sep">·</span
+        ><a href="https://ukotoba.com" target="_blank">ukotoba.com</a>
       </div>
-      <br />
-      <br />
-      <br />
 
-      
-    <h2><strong>Summary</strong></h2>
-    <hr />
-    <p style="margin-top: 0">
-      Computer Science graduate passionate about leveraging technology to optimize business operations. Distinctive approach of integrating into non-technical teams to understand their daily challenges, then engineering automated solutions to resolve them. Experienced in delivering custom tools that eliminate manual data entry, reduce errors, and significantly improve customer satisfaction.
-    </p>
-      
-      <h2><strong>Employment</strong></h2>
-      <hr />
-            <h3>Sales Rep & Automation Developer, Fontana, Tokyo Japan (July 2025 - Current)</h3>
+      <h2>Summary</h2>
+      <p>
+        CS graduate who designs and deploys production AI agents and business
+        process automation. Led the end-to-end digital transformation of a Tokyo
+        rental operation, from paper workflows to AI-assisted sales with
+        human-in-the-loop approval. Native English speaker, JLPT N2 Japanese.
+      </p>
+
+      <h2>Experience</h2>
+      <div class="row">
+        <span class="title">IT &amp; Operations — Fontana, Tokyo</span>
+        <span class="date">Jul 2025 – Present</span>
+      </div>
       <ul>
         <li>
-          <p>
-            Developed and deployed an internal automation system using <strong>Google Apps Script</strong> to modernize the check-in/out process, now adopted by the entire sales staff to process 100–150 monthly transactions.
-          </p>
+          Built AI agents integrated with company systems that answer customer
+          inquiries, look up tenant and business data, calculate move-in fees
+          and update listing availability. They process ~80M tokens and send
+          ~500 emails per month, with staff approving final decisions case by
+          case.
         </li>
         <li>
-          <p>
-            Engineered a custom integration with the <strong>Drupal CMS</strong> to automatically update website listings and sync cleaning schedules with Google Calendar, replacing a legacy paper and Excel workflow.
-          </p>
+          Designed and built the public website (<a
+            href="https://tokyocityapartments.net"
+            target="_blank"
+            >tokyocityapartments.net</a
+          >) and admin/analytics dashboard (Google Apps Script, Firebase,
+          Cloudflare R2). Increased new inquiries by 29% despite tighter visa
+          restrictions, and cut hosting and wasted ad spend by 90% with a
+          serverless backend and bot protection.
         </li>
         <li>
-          <p>
-            Significantly improved the customer experience by digitizing contracts and automating communication; tenants now receive instant, error-free move-in fee calculations, prorated rent invoices, and calendar invites, eliminating previous wait times for manual processing.
-          </p>
+          Built a contract generation system and tenant database that auto-fills
+          data, calculates fees and delivers personalized PDF contracts,
+          invoices and calendar invites, handling scheduling conflicts and
+          holidays.
         </li>
         <li>
-          <p>
-            Drive real estate sales for international clientele using fluent Japanese for operations and English for customer-facing communication.
-          </p>
+          Led change management: migrated staff to company-domain email, trained
+          staff on the new systems, and unified sales, cleaning and construction
+          schedules into a kanban board with automated ticketing and metric
+          tracking.
         </li>
       </ul>
-      <h3>
-        NREIP Intern, NSWCPD, Philadelphia, PA (June 2024 - Sept 2024)
-      </h3>
+
+      <div class="row">
+        <span class="title"
+          >NREIP Intern — Naval Surface Warfare Center (NSWCPD), Philadelphia,
+          PA</span
+        >
+        <span class="date">Jun – Sep 2024</span>
+      </div>
       <ul>
         <li>
-          <p>
-            Developed <strong>Power Apps</strong> tracking tools for Cargo Weapons Elevators (CWE) to monitor certifications, schedules, and status for LCS and LHD/LPD class ships.
-          </p>
+          Built Power Apps tools tracking certifications, schedules and status
+          of Cargo Weapons Elevators on LCS and LHD/LPD class ships, with Power
+          Automate alerts for the engineering team.
         </li>
         <li>
-          <p>
-            Automated email alerts and event notifications using <strong>Power Automate Flows</strong>, streamlining communication for the engineering team.
-          </p>
+          Centralized Objective Quality Evidence (OQE) storage with search and
+          filtering, significantly reducing document retrieval time.
         </li>
-        <li>
-          <p>
-            Centralized Objective Quality Evidence (OQE) storage, implementing robust search and filter capabilities that significantly reduced document retrieval times.
-          </p>
-        </li>
-
       </ul>
-      
-      <h2><strong>Projects</strong></h2>
-      <hr />
-      <h3>CookBook Pro Webapp</h3>
+
+      <h2>Projects</h2>
+      <div class="row">
+        <span class="title"
+          >Ukotoba — Japanese Vocabulary Learning App (<a
+            href="https://ukotoba.com"
+            target="_blank"
+            >ukotoba.com</a
+          >)</span
+        >
+      </div>
       <ul>
         <li>
-          <p>
-            Designed a meal planner and recipe discovery app using <strong>React</strong> and <strong>Bootstrap</strong> for a dynamic frontend. Integrated <strong>Firebase</strong> for authentication/hosting and engineered RESTful endpoints to consume the <strong>Spoonacular API</strong>.
-          </p>
+          Full-stack, offline-capable spaced-repetition PWA (React, TypeScript,
+          Vite, Firebase, Cloudflare R2) teaching 21,000+ Japanese words in 13+
+          languages, with all content localized per language.
         </li>
         <li>
-          <p>
-            Implemented agile and scrum methodologies to achieve learning goals
-            for basic web development and full-stack development
-          </p>
+          Engineered an LLM content pipeline grounded in dictionary data to
+          minimize hallucinations, with furigana on all Japanese text and word
+          selection via deduplication, frequency, NLP and LLM-judge filtering.
+          Processed 3B+ tokens at $0.28 per million tokens.
         </li>
       </ul>
-      <h3>
-        Machine Learning Capstone Project Lead <a
-              href="https://github.com/Capstone-Projects-2024-Spring/project-motion"
-              target="_blank"
-              >[Github Link]</a>
-      </h3>
+
+      <div class="row">
+        <span class="title"
+          >Machine Learning Capstone — Project Lead (<a
+            href="https://github.com/Capstone-Projects-2024-Spring/project-motion"
+            target="_blank"
+            >GitHub</a
+          >)</span
+        >
+      </div>
       <ul>
         <li>
-          <p>
-            Spearheaded the development of an AI-powered hand gesture recognition system using <strong>PyTorch, OpenCV, and Mediapipe</strong>; managed the project lifecycle via <strong>Jira and Git</strong>.
-          </p>
+          Led development of a real-time hand-gesture recognition system
+          (PyTorch, OpenCV, MediaPipe; feedforward and LSTM models) that
+          controls games through emulated mouse and keyboard input; managed via
+          Jira and Git.
         </li>
-        <li>
-          <p>
-            Built and trained static and action gesture recognition models using Feedforward and LSTM architectures, achieving high precision and F1 scores.
-          </p>
-        </li>
-        <li>
-          <p>
-            Implemented a custom inference engine to emulate mouse and keyboard inputs based on model outputs, enabling real-time control for gaming applications.
-          </p>
-        </li>
-        <li>
-          <p>
-            Optimized model performance through advanced data analysis, vectorization, and fine-tuning strategies to mitigate overfitting and catastrophic forgetting.
-          </p>
-        </li>
-
       </ul>
 
-      <h2><strong>Education</strong></h2>
-      <hr />
-      <p style="margin-top: 0">
-          <strong>Temple University</strong>,
-          Philadelphia, PA (2020-2024)
-        </p>
-        <ul style="margin-bottom: 3px">
-        <li>
-            <p>BS in Computer Science, GPA 3.8, <i>Presidential Scholarship,
-                    Honors Student, Dean's List</i></p>
-        </li>
-        <li>
-            <p>
-                Studied abroad at Temple University Japan, Tokyo
-                (Spring 2023)
-            </p>
-        </li>
-    </ul>
-    <p style="margin-top: 0">
-        <strong>Academy Of Language Arts</strong>, Tokyo, Japan (Oct 2024 – June 2025)
-<i>Japanese Language Program (N2)</i>
-    </p>
-    <h2><strong>Skills</strong></h2>
-    <hr />
-    <ul>
-        <li>
-            <p>
-                <strong>Programming:</strong> C, Java, Kotlin, Python, Git, Android Studio, Javascript, HTML, CSS, React, Firebase
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Certifications:</strong> CompTIA A+ (2025), CompTIA Security+ (2025), Solidworks CSWA (2019)
-            </p>
-        </li>
-    </ul>
+      <h2>Education</h2>
+      <div class="row">
+        <span class="title"
+          >Temple University — BS Computer Science, GPA 3.8</span
+        >
+        <span class="date">2020 – 2024</span>
+      </div>
+      <p>
+        Presidential Scholarship, Honors, Dean's List · Study abroad at Temple
+        University Japan, Tokyo (Spring 2023)
+      </p>
+      <div class="row">
+        <span class="title"
+          >Academy of Language Arts, Tokyo — Business Japanese Program
+          (N2)</span
+        >
+        <span class="date">Oct 2024 – Jun 2025</span>
+      </div>
 
-      </ul>
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dt>AI / LLM</dt>
+        <dd>
+          AI agents, LLM content pipelines, prompt engineering, OpenRouter,
+          DeepSeek, Claude Code
+        </dd>
+        <dt>Languages</dt>
+        <dd>Python, TypeScript, JavaScript, Java, Kotlin, C, HTML/CSS, SQL</dd>
+        <dt>Tools</dt>
+        <dd>
+          React, Vite, Firebase, Cloudflare R2, Google Apps Script, Power Apps,
+          Power Automate, PyTorch, Git
+        </dd>
+        <dt>Certifications</dt>
+        <dd>CompTIA Security+ (2025), CompTIA A+ (2025)</dd>
+      </dl>
     </div>
   </body>
 </html>
